@@ -1,268 +1,75 @@
-SQL LLM Agents - SQL DB Query
-CSV LLM+ Vector DB - Embeddings + Vector Search 
-Documents LLM-Chunking + knowledge graph + cyper Query
-RAG - GPT + Embeddings + Vector DB
-LLM knowledge graph  - 
-----
-Dataset Shape: (470, 17)
-explore_dataset(pdf_aggregate)
+extract_error_details_pandas output:
+
+
+jobId  ...                             combined_error_message
+1529  1.796636e+14  ...  Exception: Exception while running the jobStar...
+1530  1.796636e+14  ...                                                   
+1562  1.796636e+14  ...  DeltaUnsupportedOperationException: [DELTA_MUL...
+1563  1.796636e+14  ...                                                   
+1598  1.796636e+14  ...  DeltaUnsupportedOperationException: [DELTA_MUL...
+
+[5 rows x 7 columns]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           23
+DeltaUnsupportedOperationException: [DELTA_MULTIPLE_SOURCE_ROW_MATCHING_TARGET_ROW_IN_MERGE] Cannot perform Merge as multiple source rows matched and attempted to modify the same\ntarget row in the Delta table in possibly conflicting ways. By SQL semantics of Merge,\nwhen multiple source rows match on the same target row, the result may be ambiguous\nas it is unclear which source row should be used to update or delete the matching\ntarget row. You can preprocess the source table to eliminate the possibility of\nmultiple matches. Please refer to\nhttps://docs.microsoft.com/azure/databricks/delta/merge#merge-error                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 8
+ArrayIndexOutOfBoundsException: 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+*** WARNING: max output size exceeded, skipping output. ***
+
+ceptor.java:62)\n\tat org.apache.spark.network.util.TransportFrameDecoder.channelInactive(TransportFrameDecoder.java:223)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:305)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:281)\n\tat io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:274)\n\tat io.netty.channel.DefaultChannelPipeline$HeadContext.channelInactive(DefaultChannelPipeline.java:1405)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:301)\n\tat io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:281)\n\tat io.netty.channel.DefaultChannelPipeline.fireChannelInactive(DefaultChannelPipeline.java:901)\n\tat io.netty.channel.AbstractChannel$AbstractUnsafe$7.run(AbstractChannel.java:813)\n\tat io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:174)\n\tat io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:167)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:470)\n\tat io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:566)\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\n\t... 1 more\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           1
+Error while reading file abfss:REDACTED_LOCAL_PART@studaprodlakecntus.dfs.core.windows.net/uda/uhgmyuhcprod/dl_year=2024/dl_month=08/dl_day=09/part-00000-31a0350b-79be-4f6e-9c7f-47e9925843b3.c000.snappy.parquet. [DELTA_FILE_NOT_FOUND_DETAILED] File abfss://dataassets-lake@studaprodlakecntus.dfs.core.windows.net/uda/uhgmyuhcprod/dl_year=2024/dl_month=08/dl_day=09/part-00000-31a0350b-79be-4f6e-9c7f-47e9925843b3.c000.snappy.parquet referenced in the transaction log cannot be found. This occurs when data has been manually deleted from the file system rather than using the table `DELETE` statement. For more information, see https://docs.microsoft.com/azure/databricks/delta/delta-intro#frequently-asked-questions\nCaused by: FileReadException: Error while reading file abfss:REDACTED_LOCAL_PART@studaprodlakecntus.dfs.core.windows.net/uda/uhgmyuhcprod/dl_year=2024/dl_month=08/dl_day=09/part-00000-31a0350b-79be-4f6e-9c7f-47e9925843b3.c000.snappy.parquet. [DELTA_FILE_NOT_FOUND_DETAILED] File abfss://dataassets-lake@studaprodlakecntus.dfs.core.windows.net/uda/uhgmyuhcprod/dl_year=2024/dl_month=08/dl_day=09/part-00000-31a0350b-79be-4f6e-9c7f-47e9925843b3.c000.snappy.parquet referenced in the transaction log cannot be found. This occurs when data has been manually deleted from the file system rather than using the table `DELETE` statement. For more information, see https://docs.microsoft.com/azure/databricks/delta/delta-intro#frequently-asked-questions\nCaused by: SparkFileNotFoundException: Operation failed: "The specified path does not exist.", 404, GET, https://studaprodlakecntus.dfs.core.windows.net/dataassets-lake/uda/uhgmyuhcprod/dl_year%3D2024/dl_month%3D08/dl_day%3D09/part-00000-31a0350b-79be-4f6e-9c7f-47e9925843b3.c000.snappy.parquet?timeout=90&st=2024-08-13T03:56:38Z&sv=2020-02-10&ske=2024-08-13T05:56:38Z&sig=XXXXX&sktid=db05faca-c82a-4b9d-b9c5-0f64b6755421&se=2024-08-13T05:36:12Z&sdd=2&skoid=629c69fc-9568-4cabXXXXXXXXXXXXXXXXXX&spr=https&sks=b&skt=2024-08-13T03:56:38Z&sp=rl&skv=2020-10-02&sr=d, PathNotFound, "The specified path does not exist. RequestId:702248e1-201f-006c-763d-ed4217000000 Time:2024-08-13T04:55:21.2109654Z"\nIt is possible the underlying files have been updated. You can explicitly invalidate the cache in Spark by running 'REFRESH TABLE tableName' command in SQL or by recreating the Dataset/DataFrame involved.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1
+Exception: Exception while running the jobFail() -  \nCaused by: NoSuchElementException: key not found: response   
+
+1
+Name: combined_error_message, dtype: int64
 ---
-Column Types:
-object            14
-datetime64[ns]     2
-int64              1
-dtype: int64
-
-Missing Values:
-event_error    45.106383
-dtype: float64
-
-Unique Values in Key Categorical Columns:
-taskName: 1 unique values
-job-sl-uc-uhgmyuhcprod-aggregate-level    1.0
-Name: taskName, dtype: float64
-
-
-jobStatus: 2 unique values
-Succeeded    0.987234
-Failed       0.012766
-Name: jobStatus, dtype: float64
-
-
-jobTriggerType: 3 unique values
-manual    0.885106
-cron      0.106383
-repair    0.008511
-Name: jobTriggerType, dtype: float64
-
-
-actionName: 3 unique values
-runStart        0.540426
-runSucceeded    0.451064
-runFailed       0.008511
-Name: actionName, dtype: float64
-
-
-frequency: 1 unique values
-daily    1.0
-Name: frequency, dtype: float64
-
------
-explore_dataset(pdf_hitlevel)
----
-
-Dataset Shape: (5359, 17)
-
-Column Types:
-object            14
-datetime64[ns]     2
-int64              1
-dtype: int64
-
-Missing Values:
-event_error    39.951483
-runDate        94.084717
-jobStatus      94.084717
-frequency      94.084717
-projectName    94.084717
-moduleName     94.084717
-start_time     94.084717
-end_time       94.084717
-dtype: float64
-
-Unique Values in Key Categorical Columns:
-taskName: 2 unique values
-job-sl-uc-uhgmyuhcprod                    0.984699
-job-sl-uc-uhgmyuhcprod-aggregate-level    0.015301
-Name: taskName, dtype: float64
-
-
-jobStatus: 3 unique values
-Succeeded    0.883281
-Failed       0.113565
-Running      0.003155
-Name: jobStatus, dtype: float64
-
-
-jobTriggerType: 3 unique values
-manual    0.722523
-cron      0.277104
-repair    0.000373
-Name: jobTriggerType, dtype: float64
-
-
-actionName: 3 unique values
-runStart        0.437395
-runSucceeded    0.399515
-runFailed       0.163090
-Name: actionName, dtype: float64
-
-
-frequency: 1 unique values
-hourly    1.0
-Name: frequency, dtype: float64
--------
-pdf
---
-Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f73c015caf0>
-Traceback (most recent call last):
-  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 400, in match_module_callback
-    self._make_module_from_path(filepath)
-  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
-    module = module_class(filepath, prefix, user_api, internal_api)
-  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 606, in __init__
-    self.version = self.get_version()
-  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 646, in get_version
-    config = get_config().split()
-AttributeError: 'NoneType' object has no attribute 'split'
-Dataset Shape: (5829, 17)
-
-Column Types:
-object            14
-datetime64[ns]     2
-int64              1
-dtype: int64
-
-Missing Values:
-event_error    40.367130
-runDate        86.498542
-jobStatus      86.498542
-frequency      86.498542
-projectName    86.498542
-moduleName     86.498542
-start_time     86.498542
-end_time       86.498542
-dtype: float64
-
-Unique Values in Key Categorical Columns:
-taskName: 2 unique values
-job-sl-uc-uhgmyuhcprod                    0.905301
-job-sl-uc-uhgmyuhcprod-aggregate-level    0.094699
-Name: taskName, dtype: float64
-
-
-jobStatus: 3 unique values
-Succeeded    0.945362
-Failed       0.053367
-Running      0.001271
-Name: jobStatus, dtype: float64
-
-
-jobTriggerType: 3 unique values
-manual    0.735632
-cron      0.263338
-repair    0.001029
-Name: jobTriggerType, dtype: float64
-
-
-actionName: 3 unique values
-runStart        0.445703
-runSucceeded    0.403671
-runFailed       0.150626
-Name: actionName, dtype: float64
-
-
-frequency: 2 unique values
-daily     0.597205
-hourly    0.402795
-Name: frequency, dtype: float64
-
-----
-analyze_job_distribution(pdf_hitlevel)
-
-Total Unique Job Run IDs: 2870
+Total Unique Job Run IDs: 3035
 
 Distribution Analysis by Task Name:
 
 jobTriggerType Distribution:
 jobTriggerType                          cron  manual  repair
 taskName                                                    
-job-sl-uc-uhgmyuhcprod                  1483    3792       2
-job-sl-uc-uhgmyuhcprod-aggregate-level     2      80       0
+job-sl-uc-uhgmyuhcprod                  1458    3792       2
+job-sl-uc-uhgmyuhcprod-aggregate-level    52     496       4
 
 jobTriggerType Percentage Distribution:
 jobTriggerType                           cron  manual  repair
 taskName                                                     
-job-sl-uc-uhgmyuhcprod                  28.10   71.86    0.04
-job-sl-uc-uhgmyuhcprod-aggregate-level   2.44   97.56    0.00
+job-sl-uc-uhgmyuhcprod                  27.76   72.20    0.04
+job-sl-uc-uhgmyuhcprod-aggregate-level   9.42   89.86    0.72
 
 actionName Distribution:
 actionName                              runFailed  runStart  runSucceeded
 taskName                                                                 
-job-sl-uc-uhgmyuhcprod                        867      2303          2107
-job-sl-uc-uhgmyuhcprod-aggregate-level          7        41            34
+job-sl-uc-uhgmyuhcprod                        858      2295          2099
+job-sl-uc-uhgmyuhcprod-aggregate-level         11       295           246
 
 actionName Percentage Distribution:
 actionName                              runFailed  runStart  runSucceeded
 taskName                                                                 
-job-sl-uc-uhgmyuhcprod                      16.43     43.64         39.93
-job-sl-uc-uhgmyuhcprod-aggregate-level       8.54     50.00         41.46
+job-sl-uc-uhgmyuhcprod                      16.34     43.70         39.97
+job-sl-uc-uhgmyuhcprod-aggregate-level       1.99     53.44         44.57
 
 jobStatus Distribution:
-jobStatus               Failed  Running  Succeeded
-taskName                                          
-job-sl-uc-uhgmyuhcprod      36        1        280
+jobStatus                               Failed  Running  Succeeded
+taskName                                                          
+job-sl-uc-uhgmyuhcprod                      36        4        278
+job-sl-uc-uhgmyuhcprod-aggregate-level       6        0        464
 
 jobStatus Percentage Distribution:
-jobStatus               Failed  Running  Succeeded
-taskName                                          
-job-sl-uc-uhgmyuhcprod   11.36     0.32      88.33
+jobStatus                               Failed  Running  Succeeded
+taskName                                                          
+job-sl-uc-uhgmyuhcprod                   11.32     1.26      87.42
+job-sl-uc-uhgmyuhcprod-aggregate-level    1.28     0.00      98.72
 
 frequency Distribution:
-frequency               hourly
-taskName                      
-job-sl-uc-uhgmyuhcprod     317
+frequency                               daily  hourly
+taskName                                             
+job-sl-uc-uhgmyuhcprod                      0     318
+job-sl-uc-uhgmyuhcprod-aggregate-level    470       0
 
 frequency Percentage Distribution:
-frequency               hourly
-taskName                      
-job-sl-uc-uhgmyuhcprod   100.0
-
----
-analyze_job_distribution(pdf_aggregate)
-
-Total Unique Job Run IDs: 181
-
-Distribution Analysis by Task Name:
-
-jobTriggerType Distribution:
-jobTriggerType                          cron  manual  repair
-taskName                                                    
-job-sl-uc-uhgmyuhcprod-aggregate-level    50     416       4
-
-jobTriggerType Percentage Distribution:
-jobTriggerType                           cron  manual  repair
-taskName                                                     
-job-sl-uc-uhgmyuhcprod-aggregate-level  10.64   88.51    0.85
-
-actionName Distribution:
-actionName                              runFailed  runStart  runSucceeded
-taskName                                                                 
-job-sl-uc-uhgmyuhcprod-aggregate-level          4       254           212
-
-actionName Percentage Distribution:
-actionName                              runFailed  runStart  runSucceeded
-taskName                                                                 
-job-sl-uc-uhgmyuhcprod-aggregate-level       0.85     54.04         45.11
-
-jobStatus Distribution:
-jobStatus                               Failed  Succeeded
-taskName                                                 
-job-sl-uc-uhgmyuhcprod-aggregate-level       6        464
-
-jobStatus Percentage Distribution:
-jobStatus                               Failed  Succeeded
-taskName                                                 
-job-sl-uc-uhgmyuhcprod-aggregate-level    1.28      98.72
-
-frequency Distribution:
-frequency                               daily
-taskName                                     
-job-sl-uc-uhgmyuhcprod-aggregate-level    470
-
-frequency Percentage Distribution:
-frequency                               daily
-taskName                                     
-job-sl-uc-uhgmyuhcprod-aggregate-level  100.0
----
-
+frequency                               daily  hourly
+taskName                                             
+job-sl-uc-uhgmyuhcprod                    0.0   100.0
+job-sl-uc-uhgmyuhcprod-aggregate-level  100.0     0.0
