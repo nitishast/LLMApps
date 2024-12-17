@@ -3,3 +3,266 @@ CSV LLM+ Vector DB - Embeddings + Vector Search
 Documents LLM-Chunking + knowledge graph + cyper Query
 RAG - GPT + Embeddings + Vector DB
 LLM knowledge graph  - 
+----
+Dataset Shape: (470, 17)
+explore_dataset(pdf_aggregate)
+---
+Column Types:
+object            14
+datetime64[ns]     2
+int64              1
+dtype: int64
+
+Missing Values:
+event_error    45.106383
+dtype: float64
+
+Unique Values in Key Categorical Columns:
+taskName: 1 unique values
+job-sl-uc-uhgmyuhcprod-aggregate-level    1.0
+Name: taskName, dtype: float64
+
+
+jobStatus: 2 unique values
+Succeeded    0.987234
+Failed       0.012766
+Name: jobStatus, dtype: float64
+
+
+jobTriggerType: 3 unique values
+manual    0.885106
+cron      0.106383
+repair    0.008511
+Name: jobTriggerType, dtype: float64
+
+
+actionName: 3 unique values
+runStart        0.540426
+runSucceeded    0.451064
+runFailed       0.008511
+Name: actionName, dtype: float64
+
+
+frequency: 1 unique values
+daily    1.0
+Name: frequency, dtype: float64
+
+-----
+explore_dataset(pdf_hitlevel)
+---
+
+Dataset Shape: (5359, 17)
+
+Column Types:
+object            14
+datetime64[ns]     2
+int64              1
+dtype: int64
+
+Missing Values:
+event_error    39.951483
+runDate        94.084717
+jobStatus      94.084717
+frequency      94.084717
+projectName    94.084717
+moduleName     94.084717
+start_time     94.084717
+end_time       94.084717
+dtype: float64
+
+Unique Values in Key Categorical Columns:
+taskName: 2 unique values
+job-sl-uc-uhgmyuhcprod                    0.984699
+job-sl-uc-uhgmyuhcprod-aggregate-level    0.015301
+Name: taskName, dtype: float64
+
+
+jobStatus: 3 unique values
+Succeeded    0.883281
+Failed       0.113565
+Running      0.003155
+Name: jobStatus, dtype: float64
+
+
+jobTriggerType: 3 unique values
+manual    0.722523
+cron      0.277104
+repair    0.000373
+Name: jobTriggerType, dtype: float64
+
+
+actionName: 3 unique values
+runStart        0.437395
+runSucceeded    0.399515
+runFailed       0.163090
+Name: actionName, dtype: float64
+
+
+frequency: 1 unique values
+hourly    1.0
+Name: frequency, dtype: float64
+-------
+pdf
+--
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f73c015caf0>
+Traceback (most recent call last):
+  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+  File "/databricks/python/lib/python3.10/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+AttributeError: 'NoneType' object has no attribute 'split'
+Dataset Shape: (5829, 17)
+
+Column Types:
+object            14
+datetime64[ns]     2
+int64              1
+dtype: int64
+
+Missing Values:
+event_error    40.367130
+runDate        86.498542
+jobStatus      86.498542
+frequency      86.498542
+projectName    86.498542
+moduleName     86.498542
+start_time     86.498542
+end_time       86.498542
+dtype: float64
+
+Unique Values in Key Categorical Columns:
+taskName: 2 unique values
+job-sl-uc-uhgmyuhcprod                    0.905301
+job-sl-uc-uhgmyuhcprod-aggregate-level    0.094699
+Name: taskName, dtype: float64
+
+
+jobStatus: 3 unique values
+Succeeded    0.945362
+Failed       0.053367
+Running      0.001271
+Name: jobStatus, dtype: float64
+
+
+jobTriggerType: 3 unique values
+manual    0.735632
+cron      0.263338
+repair    0.001029
+Name: jobTriggerType, dtype: float64
+
+
+actionName: 3 unique values
+runStart        0.445703
+runSucceeded    0.403671
+runFailed       0.150626
+Name: actionName, dtype: float64
+
+
+frequency: 2 unique values
+daily     0.597205
+hourly    0.402795
+Name: frequency, dtype: float64
+
+----
+analyze_job_distribution(pdf_hitlevel)
+
+Total Unique Job Run IDs: 2870
+
+Distribution Analysis by Task Name:
+
+jobTriggerType Distribution:
+jobTriggerType                          cron  manual  repair
+taskName                                                    
+job-sl-uc-uhgmyuhcprod                  1483    3792       2
+job-sl-uc-uhgmyuhcprod-aggregate-level     2      80       0
+
+jobTriggerType Percentage Distribution:
+jobTriggerType                           cron  manual  repair
+taskName                                                     
+job-sl-uc-uhgmyuhcprod                  28.10   71.86    0.04
+job-sl-uc-uhgmyuhcprod-aggregate-level   2.44   97.56    0.00
+
+actionName Distribution:
+actionName                              runFailed  runStart  runSucceeded
+taskName                                                                 
+job-sl-uc-uhgmyuhcprod                        867      2303          2107
+job-sl-uc-uhgmyuhcprod-aggregate-level          7        41            34
+
+actionName Percentage Distribution:
+actionName                              runFailed  runStart  runSucceeded
+taskName                                                                 
+job-sl-uc-uhgmyuhcprod                      16.43     43.64         39.93
+job-sl-uc-uhgmyuhcprod-aggregate-level       8.54     50.00         41.46
+
+jobStatus Distribution:
+jobStatus               Failed  Running  Succeeded
+taskName                                          
+job-sl-uc-uhgmyuhcprod      36        1        280
+
+jobStatus Percentage Distribution:
+jobStatus               Failed  Running  Succeeded
+taskName                                          
+job-sl-uc-uhgmyuhcprod   11.36     0.32      88.33
+
+frequency Distribution:
+frequency               hourly
+taskName                      
+job-sl-uc-uhgmyuhcprod     317
+
+frequency Percentage Distribution:
+frequency               hourly
+taskName                      
+job-sl-uc-uhgmyuhcprod   100.0
+
+---
+analyze_job_distribution(pdf_aggregate)
+
+Total Unique Job Run IDs: 181
+
+Distribution Analysis by Task Name:
+
+jobTriggerType Distribution:
+jobTriggerType                          cron  manual  repair
+taskName                                                    
+job-sl-uc-uhgmyuhcprod-aggregate-level    50     416       4
+
+jobTriggerType Percentage Distribution:
+jobTriggerType                           cron  manual  repair
+taskName                                                     
+job-sl-uc-uhgmyuhcprod-aggregate-level  10.64   88.51    0.85
+
+actionName Distribution:
+actionName                              runFailed  runStart  runSucceeded
+taskName                                                                 
+job-sl-uc-uhgmyuhcprod-aggregate-level          4       254           212
+
+actionName Percentage Distribution:
+actionName                              runFailed  runStart  runSucceeded
+taskName                                                                 
+job-sl-uc-uhgmyuhcprod-aggregate-level       0.85     54.04         45.11
+
+jobStatus Distribution:
+jobStatus                               Failed  Succeeded
+taskName                                                 
+job-sl-uc-uhgmyuhcprod-aggregate-level       6        464
+
+jobStatus Percentage Distribution:
+jobStatus                               Failed  Succeeded
+taskName                                                 
+job-sl-uc-uhgmyuhcprod-aggregate-level    1.28      98.72
+
+frequency Distribution:
+frequency                               daily
+taskName                                     
+job-sl-uc-uhgmyuhcprod-aggregate-level    470
+
+frequency Percentage Distribution:
+frequency                               daily
+taskName                                     
+job-sl-uc-uhgmyuhcprod-aggregate-level  100.0
+---
+
