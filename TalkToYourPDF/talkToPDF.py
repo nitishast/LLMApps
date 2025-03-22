@@ -25,17 +25,14 @@ def get_pdf_text(pdf_doc):
         pdf_reader = PdfReader(pdf)
         for page in pdf_reader.pages:
             text += page.extract_text()
-            # print("Text extracted from PDF.")
-            # print(text)
     return text
 
 def get_chunk_from_text(text):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=120)
     chunks = text_splitter.split_text(text)
     return chunks
 
 def get_vector_info(text_chunks):
-    # embeddings = GoogleGenerativeAIEmbeddings(model=embeddings_model)
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
@@ -54,29 +51,36 @@ def get_conversation_chain():
     return chain
 
 def user_input(user_question):
-    # embeddings = GoogleGenerativeAIEmbeddings(model=embeddings_model)
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
     new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
     docs = new_db.similarity_search(user_question)
+    st.text(docs)
     chain = get_conversation_chain()
 
     response = chain(
         {"input_documents": docs, "question": user_question},
         return_only_outputs=True
     )
-    print(response)
-    st.write("Reply: ", response["output_text"])
+    
+    # Create a more structured and visually appealing response display
+    st.markdown("""
+    <div style='background-color: #f0f2f6; border-radius: 10px; padding: 15px; margin-top: 10px;'>
+        <h4 style='color: #333; margin-bottom: 10px;'>📝 Question:</h4>
+        <p style='font-weight: bold; color: #555; margin-bottom: 15px;'>""" + user_question + """</p>
+        <h4 style='color: #333; margin-bottom: 10px;'>💡 Answer:</h4>
+        <p style='color: #444;'>""" + response["output_text"] + """</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def run():
-    # st.set_page_config("Chat with your PDF Documents")
     st.header("Chat with Multiple PDF using FAISS, Vector Store, Langchain, and Gemini Pro")
 
     user_question = st.text_input("Please write your question?")
 
-    st.text("Here are some sample questions:")
+    # st.text("Here are some sample questions:")
     st.text("What is the document about?")
-    st.text("What are the names of the artists?")
+    # st.text("What are the names of the artists?")
 
     if user_question:
         user_input(user_question)
@@ -84,7 +88,7 @@ def run():
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader("Upload your PDF files and click on submit.", accept_multiple_files=True)
-        if st.button("Submit & Process",type="primary"):
+        if st.button("Submit & Process", type="primary"):
             if pdf_docs:
                 with st.spinner("Processing..."):
                     # Extract text from PDFs
@@ -102,3 +106,4 @@ def run():
                 st.success("Processing completed successfully!")
             else:
                 st.error("Please upload PDF files before processing.")
+

@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from InvoiceExtracter.invoiceExtracter import run as invoiceapp
 from TalkToYourPDF.talkToPDF import run as pdfapp
+from TalkToYourPDF.talkhindi import runhindi as hindipdfapp
 from QnABot.QnA import run as QnA
 from QnABot.QnAUpdated import run as QnAUI
 from FastInfrence.groqapp import run as groqapp
@@ -29,14 +30,15 @@ class MultiApp:
             app = option_menu(
                 menu_title='Navigation',
                 options=['Home',
-                         'Lets Chat!',
-                         'Invoice Reader',
+                        #  'Lets Chat!',
+                        #  'Invoice Reader',
                          'Talk To Your PDF',
                         #  'GroQChat',
                          'PDF Chat With Groq',
-                         'Query a DB'
+                         'Query a DB',
+                         'Hindi PDF'
                          ],
-                icons=['house','file-earmark-text','chat-dots','chat-dots', 'book','chat-dots','chat-dots','database'],
+                icons=['house','file-earmark-text','chat-dots','chat-dots', 'book','chat-dots','chat-dots','database','house'],
                 menu_icon='list',
                 default_index=0,
                 styles={
@@ -65,6 +67,8 @@ class MultiApp:
             QnAUI()
         if app == 'Talk To Your PDF':
             pdfapp()
+        if app == 'Hindi':
+            hindipdfapp()
         # if app == 'GroQChat':
         #     groqapp()
         if app == 'PDF Chat With Groq':
@@ -76,11 +80,12 @@ class MultiApp:
 if __name__ == "__main__":
     multi_app = MultiApp()
     multi_app.add_app("Home", landingpage)
-    multi_app.add_app("Invoice", invoiceapp)
+    # multi_app.add_app("Invoice", invoiceapp)
     # multi_app.add_app("QNA", invoiceapp)
     multi_app.add_app("QNAUI", QnAUI)
     multi_app.add_app("Invoice", invoiceapp)
     # multi_app.add_app("GroQChat", groqapp)
     multi_app.add_app("GroQChatWithUpload", groqappwithupload)
+    multi_app.add_app("HindiPDF",hindipdfapp)
     multi_app.add_app("Query a DB", lambda: SQLApp.run())
     multi_app.run()

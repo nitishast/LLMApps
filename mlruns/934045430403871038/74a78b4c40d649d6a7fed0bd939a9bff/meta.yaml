@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nitastha/Desktop/NitishFiles/Projects/SteamApps/mlruns/934045430403871038/74a78b4c40d649d6a7fed0bd939a9bff/artifacts
+end_time: 1733152773455
+entry_point_name: ''
+experiment_id: '934045430403871038'
+lifecycle_stage: active
+run_id: 74a78b4c40d649d6a7fed0bd939a9bff
+run_name: useful-turtle-681
+run_uuid: 74a78b4c40d649d6a7fed0bd939a9bff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733147550572
+status: 3
+tags: []
+user_id: nitastha

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nitastha/Desktop/NitishFiles/Projects/SteamApps/mlruns/934045430403871038/a7c34458ecc54eaaa93bcc46fbc15e8b/artifacts
+end_time: 1732786683369
+entry_point_name: ''
+experiment_id: '934045430403871038'
+lifecycle_stage: active
+run_id: a7c34458ecc54eaaa93bcc46fbc15e8b
+run_name: illustrious-doe-503
+run_uuid: a7c34458ecc54eaaa93bcc46fbc15e8b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732786621523
+status: 3
+tags: []
+user_id: nitastha

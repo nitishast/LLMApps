@@ -1,6 +1,5 @@
 import os
 import config
-import google.generativeai as genai
 import streamlit as st
 import tempfile
 
@@ -47,13 +46,12 @@ def vector_embeddings(pdf_path, is_directory=True):
 groqmodels = ["llama-3.1-70b-versatile", "llama-3.1-8b-instant", "llama3-groq-70b-8192-tool-use-preview", "gemma-7b-it"]
 
 def run():
-    st.header("High-Performance Document Interaction: Leveraging GROQ API for Rapid Inference")
+    st.header("High-Performance Document Interaction for Rapid Inference")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        use_own_doc = st.button("Use Own Document",type="primary")
-    with col2:
-        use_existing_doc = st.button("Use Existing Document",type="primary")
+    # Side panel for document upload and preview
+    st.sidebar.header("Document Upload")
+    use_own_doc = st.sidebar.button("Use Own Document", type="primary")
+    use_existing_doc = st.sidebar.button("Use Existing Document", type="primary")
 
     if use_own_doc:
         st.session_state.show_upload = True
@@ -62,13 +60,11 @@ def run():
 
     if 'show_upload' not in st.session_state:
         st.session_state.show_upload = False
-    st.text("Here are some sample questions:")
-    st.text("What is the document about?")
-    st.text("Tell me about this topic in the document?")
+
     if st.session_state.show_upload:
-        with st.expander("Upload Your Document", expanded=True):
+        with st.sidebar.expander("Upload Your Document", expanded=True):
             uploaded_file = st.file_uploader("Upload a PDF document", type="pdf")
-            if st.button("Submit & Process",type="primary"):
+            if st.button("Submit & Process", type="primary"):
                 if uploaded_file is not None:
                     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
                         temp_file.write(uploaded_file.read())
@@ -76,21 +72,45 @@ def run():
 
                     st.session_state.vector_store, st.session_state.vector_store_creation_time = vector_embeddings(temp_file_path, is_directory=False)
                     os.unlink(temp_file_path)  # Delete the temporary file
-                    st.write("Vector Store Created from Uploaded Document")
-                    st.write(f"Time Taken to create the vector store: {st.session_state.vector_store_creation_time:.2f} seconds")
+                    st.sidebar.write("Vector Store Created from Uploaded Document")
+                    st.sidebar.write(f"Time Taken to create the vector store: {st.session_state.vector_store_creation_time:.2f} seconds")
                 else:
-                    st.warning("Please upload a PDF file first.")
+                    st.sidebar.warning("Please upload a PDF file first.")
     elif use_existing_doc:
         st.session_state.vector_store, st.session_state.vector_store_creation_time = vector_embeddings(pdf_directory)
-        st.write("Vector Store Created from Existing Document")
-        st.write(f"Time Taken to create the vector store: {st.session_state.vector_store_creation_time:.2f} seconds")
+        st.sidebar.write("Vector Store Created from Existing Document")
+        st.sidebar.write(f"Time Taken to create the vector store: {st.session_state.vector_store_creation_time:.2f} seconds")
 
-    # Model selection
-    selected_model = st.selectbox("Select a model for inference:", groqmodels)
+    # Main content
+    # st.sidebar.header("Uploaded Document")
+    # st.sidebar.text("Document Preview will be shown here.")
 
-    prompt1 = st.text_input("Enter your question?")
+    # Question input box
+    prompt1 = st.text_input("Enter your question:")
 
-    if prompt1 and 'vector_store' in st.session_state:
+    # Model selection buttons
+    st.write("Select a model for inference:")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        llama_3_1_70b_versatile = st.button("llama-3.1-70b-versatile")
+    with col2:
+        llama_3_1_8b_instant = st.button("llama-3.1-8b-instant")
+    with col3:
+        llama3_groq_70b_8192_tool_use_preview = st.button("llama3-groq-70b-8192-tool-use-preview")
+    with col4:
+        gemma_7b_it = st.button("gemma-7b-it")
+
+    selected_model = None
+    if llama_3_1_70b_versatile:
+        selected_model = "llama-3.1-70b-versatile"
+    elif llama_3_1_8b_instant:
+        selected_model = "llama-3.1-8b-instant"
+    elif llama3_groq_70b_8192_tool_use_preview:
+        selected_model = "llama3-groq-70b-8192-tool-use-preview"
+    elif gemma_7b_it:
+        selected_model = "gemma-7b-it"
+
+    if prompt1 and 'vector_store' in st.session_state and selected_model:
         llm = ChatGroq(groq_api_key=groq_api_key, model_name=selected_model)
         document_chain = create_stuff_documents_chain(llm, prompt)
         retriever = st.session_state.vector_store.as_retriever()
