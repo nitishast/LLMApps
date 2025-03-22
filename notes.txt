@@ -1,5 +1,7 @@
-SQL LLM Agents - SQL DB Query
-CSV LLM+ Vector DB - Embeddings + Vector Search 
-Documents LLM-Chunking + knowledge graph + cyper Query
-RAG - GPT + Embeddings + Vector DB
-LLM knowledge graph  - 
+Consistent Execution Patterns: The jobs are regular, with a predictable failure rate and runtime based on input data size. This consistency means the team likely knows expected durations and has minimal surprises.
+
+Static Resource Allocation: Since resource allocation isn't dynamic and the same compute is used regardless of job requirements, predicting execution time doesn't directly influence optimization decisions.
+
+Expected Manual Triggers: Even when jobs are triggered manually, longer runtimes are already anticipated based on specific scenarios, making prediction redundant in such cases.
+
+Action-Oriented Insights Are Limited: Knowing the predicted time won’t help avoid failures or reallocate resources dynamically, especially when on-call staff handle issues reactively as part of routine operations.
